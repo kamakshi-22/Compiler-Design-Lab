@@ -1,0 +1,37 @@
+YACC (yet another compiler-compiler) is an LALR(1) (LookAhead, Left-to-right, Rightmost derivation producer with 1 lookahead token) parser generator.
+
+A parser generator is a program that takes as input a specification of a syntax, and produces as output a procedure for recognizing that language.
+
+------------------------------------------------------------------------------
+Syntax :
+
+/* definitions */
+ ....
+
+%% 
+/* rules */ 
+....
+%% 
+
+/* auxiliary routines */
+.... 
+
+------------------------------------------------------------------------------
+Compiling YACC program :
+
+Write lex program in a file file.l and yacc in a file file.y
+    For yacc file : 
+        define head filename
+        accept token generated
+        specify order of procedure
+        transition rules
+        parse by calling yyparse()
+        print result
+
+Open Terminal and Navigate to the Directory where you have saved the files. 
+type lex file.l 
+type yacc file.y 
+type cc lex.yy.c y.tab.h -ll 
+type ./a.out 
+
+$$ stands for the result of the current rule. $1 and $3 stand for the results of the first and third components respectively. So in this case, $1 would hold the value of the left num token and $3 of the right one.

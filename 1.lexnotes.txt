@@ -1,0 +1,53 @@
+Lex reads an input stream specifying the lexical analyzer and outputs source code implementing the lexer in the C programming language.
+-----------------------------------------------------------
+Syntax:
+
+%{
+// Definitions
+%}
+
+%%
+Rules
+%%
+
+User code section
+-----------------------------------------------------------
+Pattern	It can match with
+[0-9]	all the digits between 0 and 9
+[0+9]	either 0, + or 9
+[0, 9]	either 0, ‘, ‘ or 9
+[0 9]	either 0, ‘ ‘ or 9
+[-09]	either -, 0 or 9
+[-0-9]	either – or all digit between 0 and 9
+[0-9]+	one or more digit between 0 and 9
+[^a]	all the other characters except a
+[^A-Z]	all the other characters except the upper case letters
+a{2, 4}	either aa, aaa or aaaa
+a{2, }	two or more occurrences of a
+a{4}	exactly 4 a’s i.e, aaaa
+.	any character except newline
+a*	0 or more occurrences of a
+a+	1 or more occurrences of a
+[a-z]	all lower case letters
+[a-zA-Z]	any alphabetic letter
+w(x | y)z	wxz or wyz
+-----------------------------------------------------------
+Run Lex program:
+
+Windows: [install flex & bison]
+1. flex filename.l
+2. gcc lex.yy.c
+3. a.exe
+
+add %option noyywrap on top
+
+Ubuntu:
+sudo apt-get install flex 
+1. lex filename.lex
+2. cc lex.yy.c -lfl
+3. ./a.out
+-----------------------------------------------------------
+yytext is a pointer to the matched string (NULL-terminated)
+yyleng is the length of the matched string]
+yyin is a variable of the type FILE* and points to the input file. 
+yyout is the pointer to a file where it has to keep the output
